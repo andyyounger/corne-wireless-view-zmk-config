@@ -125,7 +125,12 @@
         thumbesc {
             bindings = <&esc_to_base>;
             key-positions = <38 39>;
-            timeout-ms = <150>;
+            // This combo spans both halves (one key crosses BLE). 150 ms was
+            // too tight: when the second thumb lands late, the combo falls
+            // back to releasing the first key as a normal press and its
+            // hold-tap fires its tap action (spurious RET/SPACE). Give the
+            // BLE-crossing key more time. Tune 250 -> 300 if it still slips.
+            timeout-ms = <250>;
         };
 
         capsword {
