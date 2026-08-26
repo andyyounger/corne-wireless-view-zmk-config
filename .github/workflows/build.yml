@@ -3,3 +3,5 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+  # Known-good alternative if main breaks (keep in sync with config/west.yml):
+  # uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@641514a97db345f499dd50b0360e594270f008fe

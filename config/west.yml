@@ -6,6 +6,9 @@ manifest:
     - name: zmk
       remote: zmkfirmware
       revision: main
+      # If main starts breaking the build, pin to the known-good commit below
+      # (also change the workflow ref in .github/workflows/build.yml to match):
+      # revision: 641514a97db345f499dd50b0360e594270f008fe  # zmk main as of 2026-08-21, verified building 2026-08-26
       import: app/west.yml
   self:
     path: config
