@@ -142,7 +142,8 @@
 &kp N0  &kp Q               &kp W               &kp E                   &kp R                 &kp T        &kp Y        &kp U                  &kp I                    &kp O               &kp P                       &kp NUMBER_0
 &trans  &lhmini LEFT_WIN A  &lhmini LEFT_ALT S  &lhmini LEFT_CONTROL D  &lhmini LEFT_SHIFT F  &kp G        &kp H        &rhmini RIGHT_SHIFT J  &rhmini RIGHT_CONTROL K  &rhmini LEFT_ALT L  &rhmini LEFT_WIN SEMICOLON  &trans
 &trans  &kp Z               &kp X               &kp C                   &kp V                 &kp B        &kp N        &kp M                  &kp COMMA                &kp DOT             &kp FSLH                    &trans
-                                                &trans                  &lt 4 TAB             &lt 2 RET    &lt 1 SPACE  &lt_bspdel 3 BSPC      &trans
+                                                &trans                  &lt 4 TAB             &lt 2 RET    &lt 1 SPACE  &lt 3      &trans
+                                                // &trans                  &lt 4 TAB             &lt 2 RET    &lt 1 SPACE  &lt_bspdel 3 BSPC      &trans
             >;
         };
 
