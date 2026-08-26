@@ -168,7 +168,7 @@
         };
 
 		// 3
-        funcr {
+        empty1 {
             display-name = "empty1";
             bindings = <
 			 &trans      &trans        &trans        &trans        &trans        &trans          &trans  &trans  &trans  &trans  &trans  &trans
@@ -199,7 +199,6 @@
 													&trans        &trans        &trans          &trans  &trans  &trans
             >;
         };
-
 
 		// EMPTY 
 		// &trans      &trans        &trans        &trans        &trans        &trans          &trans  &trans  &trans  &trans  &trans  &trans
