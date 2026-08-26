@@ -28,6 +28,13 @@
 
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
+// Only the central role (or non-split keyboards) run the keymap engine; the
+// peripheral half merely forwards scancodes over BLE. Guard the whole
+// implementation so that on a peripheral the object references nothing
+// (libapp.a is linked --whole-archive, so even an unused object must not
+// pull in symbols like zmk_keymap_layer_to that don't exist there).
+#if (!IS_ENABLED(CONFIG_ZMK_SPLIT)) || (IS_ENABLED(CONFIG_ZMK_SPLIT_ROLE_CENTRAL))
+
 static int on_esc_to_base_pressed(struct zmk_behavior_binding *binding,
                                   struct zmk_behavior_binding_event event) {
     LOG_DBG("position %d: force default layer + ESC", event.position);
@@ -51,3 +58,5 @@ static const struct behavior_driver_api esc_to_base_driver_api = {
                             CONFIG_KERNEL_INIT_PRIORITY_DEFAULT, &esc_to_base_driver_api);
 
 DT_INST_FOREACH_STATUS_OKAY(ESC_TO_BASE_INST)
+
+#endif // (!IS_ENABLED(CONFIG_ZMK_SPLIT)) || IS_ENABLED(CONFIG_ZMK_SPLIT_ROLE_CENTRAL)
