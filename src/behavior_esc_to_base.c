@@ -28,12 +28,15 @@
 
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
-// Only the central role (or non-split keyboards) run the keymap engine; the
-// peripheral half merely forwards scancodes over BLE. Guard the whole
-// implementation so that on a peripheral the object references nothing
-// (libapp.a is linked --whole-archive, so even an unused object must not
-// pull in symbols like zmk_keymap_layer_to that don't exist there).
-#if (!IS_ENABLED(CONFIG_ZMK_SPLIT)) || (IS_ENABLED(CONFIG_ZMK_SPLIT_ROLE_CENTRAL))
+// Build-system canary: this file is only added to the build for the central
+// split role (or non-split boards) -- see CMakeLists.txt. The keymap engine
+// (zmk_keymap_layer_to, raise_zmk_keycode_state_changed) does not exist in
+// peripheral firmware, and libapp.a is linked --whole-archive, so even an
+// unused object would fail to link. Fail early with a clear error if the
+// CMake gate is ever bypassed.
+#if (IS_ENABLED(CONFIG_ZMK_SPLIT) && !IS_ENABLED(CONFIG_ZMK_SPLIT_ROLE_CENTRAL))
+#error "behavior_esc_to_base.c must not be compiled for the peripheral split role; gate it in CMakeLists.txt"
+#endif
 
 static int on_esc_to_base_pressed(struct zmk_behavior_binding *binding,
                                   struct zmk_behavior_binding_event event) {
@@ -58,5 +61,3 @@ static const struct behavior_driver_api esc_to_base_driver_api = {
                             CONFIG_KERNEL_INIT_PRIORITY_DEFAULT, &esc_to_base_driver_api);
 
 DT_INST_FOREACH_STATUS_OKAY(ESC_TO_BASE_INST)
-
-#endif // (!IS_ENABLED(CONFIG_ZMK_SPLIT)) || IS_ENABLED(CONFIG_ZMK_SPLIT_ROLE_CENTRAL)
