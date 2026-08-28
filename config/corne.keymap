@@ -23,6 +23,18 @@
     flavor = "balanced";
 };
 
+// Mouse move: faster ramp (150ms), less aggressive acceleration
+&mmv {
+    time-to-max-speed-ms = <150>;
+    acceleration-exponent = <0>;
+};
+
+// Mouse scroll: faster ramp, linear
+&msc {
+    time-to-max-speed-ms = <150>;
+    acceleration-exponent = <0>;
+};
+
 / {
     behaviors {
         graveesc: graveesc {
