@@ -165,10 +165,10 @@
         default_layer {
             display-name = "Base";
             bindings = <
-&kp N0  &kp Q               &kp W               &kp E                   &kp R                 &kp T        &kp Y        &kp U                  &kp I                    &kp O               &kp P                       &kp NUMBER_0
+&trans  &kp Q               &kp W               &kp E                   &kp R                 &kp T        &kp Y        &kp U                  &kp I                    &kp O               &kp P                       &trans
 &trans  &lhmini LEFT_WIN A  &lhmini LEFT_ALT S  &lhmini LEFT_CONTROL D  &lhmini LEFT_SHIFT F  &kp G        &kp H        &rhmini RIGHT_SHIFT J  &rhmini RIGHT_CONTROL K  &rhmini LEFT_ALT L  &rhmini LEFT_WIN SEMICOLON  &trans
 &trans  &kp Z               &kp X               &kp C                   &kp V                 &kp B        &kp N        &kp M                  &kp COMMA                &kp DOT             &kp FSLH                    &trans
-                                                &trans                  &lt 4 TAB             &lt 2 RET    &lt 1 SPACE  &lt_bspdel 3 BSPC      &trans
+                                                &lt 5 ESCAPE            &lt 4 TAB             &lt 2 RET    &lt 1 SPACE  &lt_bspdel 3 BSPC      &trans
             >;
         };
 
@@ -180,7 +180,7 @@
 &tog 1  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5    &kp N6    &kp N7         &kp N8     &kp N9     &kp N0  &tog 1
 &trans  &trans  &trans  &trans  &trans  &trans    &kp LEFT  &kp DOWN       &kp UP     &kp RIGHT  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &kp HOME  &kp PAGE_DOWN  &kp PG_UP  &kp END    &trans  &trans
-                        &tog 1  &trans  &trans    &trans    &trans         &tog 1
+                        &trans  &trans  &trans    &trans    &trans         &trans
             >;
         };
 
@@ -192,7 +192,7 @@
 &tog 2  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp KP_MULTIPLY  &kp LPAR  &kp RPAR  &tog 2
 &trans  &trans    &trans  &trans    &trans    &kp GRAVE    &kp MINUS  &kp EQUAL  &kp LBKT         &kp RBKT  &kp BSLH  &trans
 &trans  &trans    &trans  &trans    &trans    &kp TILDE    &kp UNDER  &kp PLUS   &kp LBRC         &kp RBRC  &kp PIPE  &trans
-                          &tog 2    &trans    &trans       &trans     &trans     &tog 2
+                          &trans    &trans    &trans       &trans     &trans     &trans
             >;
         };
 
@@ -204,7 +204,7 @@
 &tog 3  &trans  &trans  &trans  &trans    &trans      &trans          &trans          &trans        &trans           &trans  &tog 3
 &trans  &trans  &trans  &trans  &trans    &trans      &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans  &trans
 &trans  &trans  &trans  &trans  &trans    &trans      &trans          &msc SCRL_DOWN  &msc SCRL_UP  &trans           &trans  &trans
-                        &tog 3  &mkp MB1  &mkp MB2    &mkp MB1        &mkp MB2        &tog 3
+                        &trans  &mkp MB1  &mkp MB2    &mkp MB1        &mkp MB2        &trans
             >;
         };
 
@@ -216,7 +216,7 @@
 &tog 4  &trans  &trans  &trans  &trans  &trans    &kp F9  &kp F10  &kp F11  &kp F12  &kp SYSREQ       &tog 4
 &trans  &trans  &trans  &trans  &trans  &trans    &kp F5  &kp F6   &kp F7   &kp F8   &kp SCROLLLOCK   &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &kp F1  &kp F2   &kp F3   &kp F4   &kp PRINTSCREEN  &trans
-                        &tog 4  &trans  &trans    &trans  &trans   &tog 4
+                        &trans  &trans  &trans    &trans  &trans   &trans
             >;
         };
 
@@ -225,10 +225,10 @@
         special {
             display-name = "special";
             bindings = <
-&tog 5      &trans        &trans        &trans        &trans        &trans          &trans  &trans  &trans  &trans  &trans  &kp SYSREQ
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &trans  &trans  &trans  &trans  &kp SCROLLLOCK
-&trans      &trans        &trans        &trans        &trans        &trans          &trans  &trans  &trans  &trans  &trans  &kp PRINTSCREEN
-                                        &tog 5        &trans        &trans          &trans  &trans  &tog 5
+&tog 5				&bt BT_SEL 0	&bt BT_SEL 1		  &bt BT_SEL 2			&bt BT_SEL 3	&bt BT_SEL 4	&trans  &trans  &trans	&trans  &kp SYSREQ       &tog 5
+&bt BT_CLR			&trans			&trans				  &trans				&trans			&trans			&trans  &trans  &trans	&trans  &kp SCROLLLOCK   &trans 
+&kp C_VOLUME_DOWN	&kp C_VOLUME_UP &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &trans			&trans			&trans  &trans  &trans  &trans  &kp PRINTSCREEN	 &trans 
+									&trans				  &trans				&trans          &trans			&trans  &trans
             >;
         };
 
