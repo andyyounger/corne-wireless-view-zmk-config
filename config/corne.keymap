@@ -153,6 +153,31 @@
             bindings = <&kp CAPSLOCK>;
             key-positions = <15 16 19 20>;
         };
+
+        btclear {
+            bindings = <&bt BT_CLR>;
+            key-positions = <5 29 27>;
+        };
+
+        bt1 {
+            bindings = <&bt BT_SEL 0>;
+            key-positions = <5 29 1>;
+        };
+
+        bt2 {
+            bindings = <&bt BT_SEL 1>;
+            key-positions = <5 29 2>;
+        };
+
+        bt3 {
+            bindings = <&bt BT_SEL 2>;
+            key-positions = <5 29 3>;
+        };
+
+        bt4 {
+            bindings = <&bt BT_SEL 3>;
+            key-positions = <5 29 4>;
+        };
     };
 
     keymap {
@@ -225,10 +250,10 @@
         special {
             display-name = "special";
             bindings = <
-&tog 5		&bt BT_SEL 0		&bt BT_SEL 1		  &bt BT_SEL 2			&bt BT_SEL 3	&bt BT_SEL 4	&trans  &trans  &trans	&trans  &kp SYSREQ       &tog 5
-&bt BT_CLR	&trans				&trans				  &trans				&trans			&trans			&trans  &trans  &trans	&trans  &kp SCROLLLOCK   &trans 
-&trans		&kp C_VOLUME_DOWN	&kp C_VOLUME_UP &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &trans			&trans	&trans  &trans  &trans  &trans  &kp PRINTSCREEN	 &trans 
-								&trans				  &trans				&trans          &trans			&trans  &trans
+&tog 5             &bt BT_SEL 0     &bt BT_SEL 1          &bt BT_SEL 2          &bt BT_SEL 3  &trans    &trans  &trans  &trans  &trans  &kp SYSREQ       &tog 5
+&bt BT_CLR         &trans           &trans                &trans                &trans        &trans    &trans  &trans  &trans  &trans  &kp SCROLLLOCK   &trans
+&kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &trans        &trans    &trans  &trans  &trans  &trans  &kp PRINTSCREEN  &trans
+                                                          &trans                &trans        &trans    &trans  &trans  &trans
             >;
         };
 
