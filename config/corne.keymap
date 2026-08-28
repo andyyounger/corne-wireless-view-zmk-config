@@ -226,10 +226,10 @@
         extra {
             display-name = "Extra";
             bindings = <
-			&tog 3	&kp C_VOLUME_DOWN	&kp C_BRIGHTNESS_DEC	&trans	&trans	&trans			&trans          &trans          &trans        &trans           &trans  &tog 3
-			&trans	&kp C_VOLUME_UP		&kp C_BRIGHTNESS_INC	&trans	&trans	&trans			&mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans  &trans
-			&trans  &trans				&trans					&trans	&trans	&trans			&trans          &msc SCRL_DOWN  &msc SCRL_UP  &trans           &trans  &trans
-																&trans	&mkp MB1  &mkp MB2		&mkp MB1        &mkp MB2        &trans
+&tog 3  &kp K_VOL_DN  &kp C_BRI_DEC  &trans  &trans    &trans      &trans          &trans          &trans        &trans           &trans  &tog 3
+&trans  &kp K_VOL_UP  &kp C_BRI_INC  &trans  &trans    &trans      &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans  &trans
+&trans  &kp K_MUTE    &trans         &trans  &trans    &trans      &trans          &msc SCRL_DOWN  &msc SCRL_UP  &trans           &trans  &trans
+                                     &trans  &mkp MB1  &mkp MB2    &mkp MB1        &mkp MB2        &trans
             >;
         };
 
@@ -238,10 +238,10 @@
         funcr {
             display-name = "funcright";
             bindings = <
-			&tog 4  &trans  &trans  &trans  &trans  &trans    &kp F9  &kp F10  &kp F11  &kp F12  &kp SYSREQ       &tog 4
-			&trans  &trans  &trans  &trans  &trans  &trans    &kp F5  &kp F6   &kp F7   &kp F8   &kp SCROLLLOCK   &trans
-			&trans  &trans  &trans  &trans  &trans  &trans    &kp F1  &kp F2   &kp F3   &kp F4   &kp PRINTSCREEN  &trans
-									&trans  &trans  &trans    &trans  &trans   &trans
+&tog 4  &trans  &trans  &trans  &trans  &trans    &kp F9  &kp F10  &kp F11  &kp F12  &kp SYSREQ       &tog 4
+&trans  &trans  &trans  &trans  &trans  &trans    &kp F5  &kp F6   &kp F7   &kp F8   &kp SCROLLLOCK   &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &kp F1  &kp F2   &kp F3   &kp F4   &kp PRINTSCREEN  &trans
+                        &trans  &trans  &trans    &trans  &trans   &trans
             >;
         };
 
@@ -250,10 +250,10 @@
         special {
             display-name = "special";
             bindings = <
-			&tog 5      &trans    &trans    &trans  &trans  &trans		&trans	&trans	&trans &trans &trans &tog 5
-			&trans      &trans    &trans    &trans  &trans  &trans		&trans	&trans	&trans &trans &trans &trans
-			&trans      &trans    &trans    &trans  &trans  &trans		&trans	&trans	&trans &trans &trans &trans
-											&trans	&trans	&trans		&trans	&trans	&trans
+&tog 5  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &tog 5
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
 
