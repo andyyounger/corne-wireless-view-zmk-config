@@ -24,15 +24,17 @@
 };
 
 // Mouse move: faster ramp (150ms), less aggressive acceleration
+
 &mmv {
-    time-to-max-speed-ms = <150>;
-    acceleration-exponent = <1>;
+    time-to-max-speed-ms = <250>;
+    acceleration-exponent = <2>;
 };
 
 // Mouse scroll: faster ramp, linear
+
 &msc {
-    time-to-max-speed-ms = <150>;
-    acceleration-exponent = <1>;
+    time-to-max-speed-ms = <250>;
+    acceleration-exponent = <2>;
 };
 
 / {
@@ -57,6 +59,7 @@
         // Custom behavior (see src/behavior_esc_to_base.c): sends ESC and
         // forces the default layer, cancelling any layer locked via the
         // stick keys.
+
         esc_to_base: esc_to_base {
             compatible = "zmk,behavior-esc-to-base";
             #binding-cells = <0>;
@@ -140,6 +143,7 @@
             key-positions = <38 39>;
             timeout-ms = <150>;
         };
+
         capsword {
             bindings = <&caps_word>;
             key-positions = <16 19>;
@@ -156,7 +160,6 @@
 
         // "Stick" keys (outermost thumb key on each side): while holding an &lt
         // key, tap one to lock the held layer; tap it again to unlock (back to base).
-
         // 0
 
         default_layer {
@@ -198,10 +201,10 @@
         extra {
             display-name = "Extra";
             bindings = <
-&kp NUMBER_3  &trans  &trans  &trans  &trans	&trans		&trans			&trans			&trans			&trans			&trans  &kp NUMBER_3
-&trans        &trans  &trans  &trans  &trans	&trans		&mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP	&mmv MOVE_RIGHT &trans  &trans
-&trans        &trans  &trans  &trans  &trans	&trans		&trans			&msc SCRL_DOWN	&msc SCRL_UP	&trans			&trans  &trans
-                              &tog 3  &mkp MB1  &mkp MB2    &mkp MB1		&mkp MB2		&tog 3
+&kp NUMBER_3  &trans  &trans  &trans  &trans    &trans      &trans          &trans          &trans        &trans           &trans  &kp NUMBER_3
+&trans        &trans  &trans  &trans  &trans    &trans      &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans  &trans
+&trans        &trans  &trans  &trans  &trans    &trans      &trans          &msc SCRL_DOWN  &msc SCRL_UP  &trans           &trans  &trans
+                              &tog 3  &mkp MB1  &mkp MB2    &mkp MB1        &mkp MB2        &tog 3
             >;
         };
 
