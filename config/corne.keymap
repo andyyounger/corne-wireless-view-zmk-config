@@ -262,7 +262,7 @@
 
         // 5
 
-        special {
+        lnum {
             display-name = "lnum";
             bindings = <
 &tog 5  &trans  &kp N7  &kp N8  &kp N9  &kp N0         &trans  &trans  &trans  &trans  &trans  &tog 5
