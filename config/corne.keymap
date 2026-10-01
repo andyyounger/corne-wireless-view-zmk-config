@@ -283,7 +283,7 @@
         compatible = "zmk,conditional-layers";
 
         extra {
-            if-layers = <1 2>;
+            if-layers = <2 4>;
             then-layer = <3>;
         };
     };
