@@ -16,7 +16,7 @@
  *   [Right] &lt 2 SPACE  &lt_bspdel 1 BSPDEL
  *
  * Outer columns are used as on the lily:
- *   base:   &mt LCTRL ESCAPE / &mt RCTRL ENTER (row 2), &kp LSHFT / &kp RSHFT (row 3)
+ *   base:   &mt LCTRL ESC / &mt RCTRL RET (row 2), &kp LSHFT / &kp RSHFT (row 3)
  *   layers: &tog <layer> lock keys at both ends of the qwerty row (row 0),
  *           matching the lily's qwerty row (row 1) positionally.
  *   While holding an &lt thumb key, tap an outer &tog key to lock the held
@@ -125,7 +125,7 @@
             require-prior-idle-ms = <150>;
             bindings = <&kp>, <&kp>;
 
-            hold-trigger-key-positions = <0 1 2 3 5 4 27 28 26 25 24 30 29 31 32 33 34 35 23 11 10 9 8 7 6 12 37 36 38 39 40 41 18 19 20 21 22 23>;
+            hold-trigger-key-positions = <0 1 2 3 4 5 6 7 8 9 10 11 12 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41>;
             label = "LHMINI";
             hold-trigger-on-release;
         };
@@ -139,7 +139,7 @@
             require-prior-idle-ms = <150>;
             bindings = <&kp>, <&kp>;
 
-            hold-trigger-key-positions = <12 13 14 15 16 17 24 25 26 27 28 29 0 1 2 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38 3 6 7 8 9 10 11 23 30 31 32 33 34 35 39 40 41>;
+            hold-trigger-key-positions = <0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41>;
             label = "RHMINI";
             hold-trigger-on-release;
         };
@@ -151,14 +151,12 @@
         compatible = "zmk,combos";
 
         // R E B T
-
         bootloader {
             bindings = <&bootloader>;
             key-positions = <4 3 29 5>;
         };
 
         // RET SPACE (both inner thumbs): ESC and force default layer.
-
         thumbesc {
             bindings = <&esc_to_base>;
             key-positions = <38 39>;
@@ -166,56 +164,48 @@
         };
 
         // F J
-
         capsword {
             bindings = <&caps_word>;
             key-positions = <16 19>;
         };
 
         // D F J K
-
         caps {
             bindings = <&kp CAPS>;
             key-positions = <15 16 19 20>;
         };
 
         // B T C
-
         btclear {
             bindings = <&bt BT_CLR>;
             key-positions = <5 29 27>;
         };
 
         // B T Q
-
         bt1 {
             bindings = <&bt BT_SEL 0>;
             key-positions = <5 29 1>;
         };
 
         // B T W
-
         bt2 {
             bindings = <&bt BT_SEL 1>;
             key-positions = <5 29 2>;
         };
 
         // B T E
-
         bt3 {
             bindings = <&bt BT_SEL 2>;
             key-positions = <5 29 3>;
         };
 
         // B T R
-
         bt4 {
             bindings = <&bt BT_SEL 3>;
             key-positions = <5 29 4>;
         };
 
         // B T O: toggle output between USB (dongle) and BLE (active profile's host)
-
         btout {
             bindings = <&out OUT_TOG>;
             key-positions = <5 29 9>;
@@ -226,6 +216,17 @@
         btz {
             bindings = <&out OUT_TOG>;
             key-positions = <5 29 25>;
+        };
+
+
+        // J ; : right-hand vim colon fog. Works without mask
+        // surgery because J and ; are both rhmini cluster members, and the
+        // rhmini mask already excludes its own cluster. (corne: J, ;)
+
+        vimcolon_j {
+            bindings = <&kp COLON>;
+            key-positions = <19 22>;
+            timeout-ms = <150>;
         };
     };
 
@@ -239,17 +240,21 @@
         //   row3 (thumbs): 36-38 | 39-41
 
         base {
-            // |      |  Q   |  W   |  E   |  R   |  T   |          |  Y   |  U   |  I   |  O   |  P   | Bspc |
-            // | C-Esc|  A   |  S   |  D   |  F   |  G   |          |  H   |  J   |  K   |  L   |  ;   |C-Ent |
-            // | SHFT |  Z   |  X   |  C   |  V   |  B   |          |  N   |  M   |  ,   |  .   |  /   | SHFT |
-            //                      |  -   | LT1  | LT3  |          | LT2   | LT1/BSPDEL |  -   |
-
             display-name = "Base";
             bindings = <
-&trans            &kp Q           &kp W           &kp E            &kp R             &kp T              &kp Y            &kp U              &kp I            &kp O           &kp P                   &kp BSPC
-&mt LCTRL ESCAPE  &lhmini LGUI A  &lhmini LALT S  &lhmini LCTRL D  &lhmini LSHIFT F  &lhmini LC(B) G    &rhmini LC(B) H  &rhmini RSHIFT J   &rhmini LCTRL K  &rhmini LALT L  &rhmini LGUI SEMICOLON  &mt RCTRL ENTER
-&kp LSHFT         &kp Z           &kp X           &kp C            &kp V             &kp B              &kp N            &kp M              &kp COMMA        &kp DOT         &kp FSLH                &kp RSHFT
-                                                  &trans           &lt 1 TAB         &lt 3 RET          &lt 2 SPACE      &lt_bspdel 1 BSPC  &trans
+//    ┌─────────────┬────────────────┬────────────────┬────────────────┬────────────────┬───────────────────┬───────────────────┬──────────────────┬────────────────┬────────────────┬────────────────┬─────────────┐
+//    │             │       Q        │       W        │       E        │       R        │         T         │         Y         │        U         │       I        │       O        │       P        │    bspc     │
+//    ├─────────────┼────────────────┼────────────────┼────────────────┼────────────────┼───────────────────┼───────────────────┼──────────────────┼────────────────┼────────────────┼────────────────┼─────────────┤
+//    │ mt lctl esc │ &lhmini lgui A │ &lhmini lalt S │ &lhmini lctl D │ &lhmini lsft F │ &lhmini lctl(B) G │ &rhmini lctl(B) H │  &rhmini rsft J  │ &rhmini lctl K │ &rhmini lalt L │ &rhmini lgui ; │ mt rctl ent │
+//    ├─────────────┼────────────────┼────────────────┼────────────────┼────────────────┼───────────────────┼───────────────────┼──────────────────┼────────────────┼────────────────┼────────────────┼─────────────┤
+//    │    lsft     │       Z        │       X        │       C        │       V        │         B         │         N         │        M         │       ,        │       .        │       /        │    rsft     │
+//    └─────────────┴────────────────┴────────────────┼────────────────┼────────────────┼───────────────────┼───────────────────┼──────────────────┼────────────────┼────────────────┴────────────────┴─────────────┘
+//                                                    │                │    lt 1 tab    │     lt 3 ent      │     lt 2 spc      │ lt_bspdel 1 bspc │                │
+//                                                    └────────────────┴────────────────┴───────────────────┴───────────────────┴──────────────────┴────────────────┘
+  &trans          &kp Q            &kp W            &kp E             &kp R             &kp T             &kp Y             &kp U               &kp I             &kp O            &kp P               &kp BSPC
+  &mt LCTRL ESC   &lhmini LGUI A   &lhmini LALT S   &lhmini LCTRL D   &lhmini LSHFT F   &lhmini LC(B) G   &rhmini LC(B) H   &rhmini RSHFT J     &rhmini LCTRL K   &rhmini LALT L   &rhmini LGUI SEMI   &mt RCTRL RET
+  &kp LSHFT       &kp Z            &kp X            &kp C             &kp V             &kp B             &kp N             &kp M               &kp COMMA         &kp DOT          &kp FSLH            &kp RSHFT
+                                                    &trans            &lt 1 TAB         &lt 3 RET         &lt 2 SPACE       &lt_bspdel 1 BSPC   &trans
             >;
         };
 
@@ -258,10 +263,19 @@
         Sym {
             display-name = "Sym";
             bindings = <
-&tog 1			&kp TILDE       &kp AMPERSAND            &kp ASTERISK           &kp LEFT_PARENTHESIS   &kp RIGHT_PARENTHESIS  &kp MINUS		&kp EQUAL				&kp LEFT_BRACKET   &kp RIGHT_BRACKET  &kp BACKSLASH  &tog 1
-&trans			&trans          &lhmini LEFT_ALT DOLLAR  &lhmini LCTRL PERCENT  &lhmini LSHFT CARET    &trans                 &kp UNDER		&rhmini LSHIFT PLUS		&rhmini LCTRL LBRC  &rhmini LALT RBKT  &rhmini LWIN SQT  &trans
-&trans			&trans			&kp EXCLAMATION          &kp AT_SIGN            &kp HASH               &trans                 &trans		&trans					&trans             &trans             &trans         &trans
-														&trans					&trans				   &trans				  &trans		&trans					&trans
+//    ┌───────┬─────┬────────────────┬────────────────┬────────────────┬─────┬─────┬────────────────┬────────────────┬────────────────┬────────────────┬───────┐
+//    │ tog 1 │  ~  │       &        │       *        │       (        │  )  │  -  │       =        │       [        │       ]        │       \        │ tog 1 │
+//    ├───────┼─────┼────────────────┼────────────────┼────────────────┼─────┼─────┼────────────────┼────────────────┼────────────────┼────────────────┼───────┤
+//    │       │     │ &lhmini lalt $ │ &lhmini lctl % │ &lhmini lsft ^ │     │  _  │ &rhmini lsft + │ &rhmini lctl { │ &rhmini lalt ] │ &rhmini lgui ' │       │
+//    ├───────┼─────┼────────────────┼────────────────┼────────────────┼─────┼─────┼────────────────┼────────────────┼────────────────┼────────────────┼───────┤
+//    │       │     │       !        │       @        │       #        │     │     │                │                │                │                │       │
+//    └───────┴─────┴────────────────┼────────────────┼────────────────┼─────┼─────┼────────────────┼────────────────┼────────────────┴────────────────┴───────┘
+//                                   │                │                │     │     │                │                │
+//                                   └────────────────┴────────────────┴─────┴─────┴────────────────┴────────────────┘
+  &tog 1   &kp TILDE   &kp AMPS            &kp STAR              &kp LPAR              &kp RPAR   &kp MINUS   &kp EQUAL            &kp LBKT             &kp RBKT            &kp BSLH           &tog 1
+  &trans   &trans      &lhmini LALT DLLR   &lhmini LCTRL PRCNT   &lhmini LSHFT CARET   &trans     &kp UNDER   &rhmini LSHFT PLUS   &rhmini LCTRL LBRC   &rhmini LALT RBKT   &rhmini LWIN SQT   &trans
+  &trans   &trans      &kp EXCL            &kp AT                &kp HASH              &trans     &trans      &trans               &trans               &trans              &trans             &trans
+                                           &trans                &trans                &trans     &trans      &trans               &trans
             >;
         };
 
@@ -270,24 +284,42 @@
         cursornum {
             display-name = "curnum";
             bindings = <
-&tog 2  &kp GRAVE  &kp N7                 &kp N8            &kp N9                  &kp N0       &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &msc SCRL_UP    &tog 2
-&trans  &trans     &lhmini LALT NUMBER_4  &lhmini LCTRL N5  &lhmini LSHFT NUMBER_6  &kp MINUS    &kp LEFT        &kp DOWN        &kp UP        &kp RIGHT        &trans          &trans
-&trans  &trans     &kp NUMBER_1           &kp NUMBER_2      &kp NUMBER_3            &kp EQUAL    &kp HOME        &kp PG_DN       &kp PG_UP     &kp END          &msc SCRL_DOWN  &trans
-                                          &trans            &mkp MB1                &mkp MB2     &mkp MB1        &mkp MB2        &trans
+//    ┌───────┬─────┬────────────────┬────────────────┬────────────────┬──────┬────────────────┬────────────────┬──────────────┬────────────────┬────────────────┬───────┐
+//    │ tog 2 │  `  │       7        │       8        │       9        │  0   │ &mmv MOVE_left │ &mmv MOVE_down │ &mmv MOVE_up │ &mmv MOVE_rght │  &msc SCRL_up  │ tog 2 │
+//    ├───────┼─────┼────────────────┼────────────────┼────────────────┼──────┼────────────────┼────────────────┼──────────────┼────────────────┼────────────────┼───────┤
+//    │       │     │ &lhmini lalt 4 │ &lhmini lctl 5 │ &lhmini lsft 6 │  -   │      left      │      down      │      up      │      rght      │                │       │
+//    ├───────┼─────┼────────────────┼────────────────┼────────────────┼──────┼────────────────┼────────────────┼──────────────┼────────────────┼────────────────┼───────┤
+//    │       │     │       1        │       2        │       3        │  =   │      home      │      pgdn      │     pgup     │      end       │ &msc SCRL_down │       │
+//    └───────┴─────┴────────────────┼────────────────┼────────────────┼──────┼────────────────┼────────────────┼──────────────┼────────────────┴────────────────┴───────┘
+//                                   │                │      lclk      │ rclk │      lclk      │      rclk      │              │
+//                                   └────────────────┴────────────────┴──────┴────────────────┴────────────────┴──────────────┘
+  &tog 2   &kp GRAVE   &kp N7            &kp N8             &kp N9             &kp N0      &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_UP   &mmv MOVE_RIGHT   &msc SCRL_UP     &tog 2
+  &trans   &trans      &lhmini LALT N4   &lhmini LCTRL N5   &lhmini LSHFT N6   &kp MINUS   &kp LEFT         &kp DOWN         &kp UP         &kp RIGHT         &trans           &trans
+  &trans   &trans      &kp N1            &kp N2             &kp N3             &kp EQUAL   &kp HOME         &kp PG_DN        &kp PG_UP      &kp END           &msc SCRL_DOWN   &trans
+                                         &trans             &mkp MB1           &mkp MB2    &mkp MB1         &mkp MB2         &trans
             >;
         };
 
         // 3: F-keys, mirrored on both halves.
-        // SYSREQ/SCROLLLOCK/PSCRN kept on the right outer column (no lily
+        // SYSREQ/SLCK/PSCRN kept on the right outer column (no lily
         // equivalent there; drop them if you want byte-for-byte parity).
 
         funcr {
             display-name = "funcright";
             bindings = <
-&tog 3  &kp F9               &kp F10          &kp F11           &kp F12            &trans    &kp F9  &kp F10                &kp F11           &kp F12              &kp SYSREQ                   &tog 3
-&trans  &lhmini LEFT_WIN F5  &lhmini LALT F6  &lhmini LCTRL F7  &lhmini LSHIFT F8  &trans    &kp F5  &rhmini LEFT_SHIFT F6  &rhmini LCTRL F7  &rhmini LEFT_ALT F8  &rhmini LEFT_WIN SCROLLLOCK  &trans
-&trans  &kp F1               &kp F2           &kp F3            &kp F4             &trans    &kp F1  &kp F2                 &kp F3            &kp F4               &kp PSCRN                    &trans
-                                              &trans            &trans             &trans    &trans  &trans                 &trans
+//    ┌───────┬─────────────────┬─────────────────┬─────────────────┬─────────────────┬─────┬─────┬─────────────────┬─────────────────┬─────────────────┬───────────────────┬───────┐
+//    │ tog 3 │       f9        │       f10       │       f11       │       f12       │     │ f9  │       f10       │       f11       │       f12       │      sys_req      │ tog 3 │
+//    ├───────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼─────┼─────┼─────────────────┼─────────────────┼─────────────────┼───────────────────┼───────┤
+//    │       │ &lhmini lgui f5 │ &lhmini lalt f6 │ &lhmini lctl f7 │ &lhmini lsft f8 │     │ f5  │ &rhmini lsft f6 │ &rhmini lctl f7 │ &rhmini lalt f8 │ &rhmini lgui slck │       │
+//    ├───────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼─────┼─────┼─────────────────┼─────────────────┼─────────────────┼───────────────────┼───────┤
+//    │       │       f1        │       f2        │       f3        │       f4        │     │ f1  │       f2        │       f3        │       f4        │       pscr        │       │
+//    └───────┴─────────────────┴─────────────────┼─────────────────┼─────────────────┼─────┼─────┼─────────────────┼─────────────────┼─────────────────┴───────────────────┴───────┘
+//                                                │                 │                 │     │     │                 │                 │
+//                                                └─────────────────┴─────────────────┴─────┴─────┴─────────────────┴─────────────────┘
+  &tog 3   &kp F9            &kp F10           &kp F11            &kp F12            &trans   &kp F9   &kp F10            &kp F11            &kp F12           &kp SYSREQ          &tog 3
+  &trans   &lhmini LWIN F5   &lhmini LALT F6   &lhmini LCTRL F7   &lhmini LSHFT F8   &trans   &kp F5   &rhmini LSHFT F6   &rhmini LCTRL F7   &rhmini LALT F8   &rhmini LWIN SLCK   &trans
+  &trans   &kp F1            &kp F2            &kp F3             &kp F4             &trans   &kp F1   &kp F2             &kp F3             &kp F4            &kp PSCRN           &trans
+                                               &trans             &trans             &trans   &trans   &trans             &trans
             >;
         };
     };
